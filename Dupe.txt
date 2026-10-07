@@ -59,7 +59,7 @@ titleLabel.Parent = mainFrame
 local subLabel = Instance.new("TextLabel")
 subLabel.Size = UDim2.new(1, 0, 0, 25)
 subLabel.Position = UDim2.new(0, 0, 0, 55)
-subLabel.Text = "★ Made by tomatounu"
+subLabel.Text = "★ by Käthe"
 subLabel.Font = Enum.Font.SourceSansBold
 subLabel.TextSize = 16
 subLabel.TextColor3 = Color3.fromRGB(100, 105, 115)
@@ -190,8 +190,8 @@ task.spawn(function()
 end)
 
 fireBtn.MouseButton1Click:Connect(function()
-	local charName = nameInput.Text ~= "" and nameInput.Text or "Kaido"
-	local charRarity = rarityInput.Text ~= "" and rarityInput.Text or "Mythical"
+	local charName = nameInput.Text ~= "" and nameInput.Text or "Luffy"
+	local charRarity = rarityInput.Text ~= "" and rarityInput.Text or "Rare"
 	local charMutation = mutationInput.Text ~= "" and mutationInput.Text or "Normal"
 	
 	local eventsFolder = rep:FindFirstChild("Events")
@@ -209,4 +209,4 @@ fireBtn.MouseButton1Click:Connect(function()
 	end
 end)
 
--- spent a lotta time on ts ngl, yall better leave a 
+-- Made by Käthe
