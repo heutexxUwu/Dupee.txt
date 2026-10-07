@@ -1,0 +1,212 @@
+local plrs = game:GetService("Players")
+local rep = game:GetService("ReplicatedStorage")
+local uis = game:GetService("UserInputService")
+local ts = game:GetService("TweenService")
+local lplr = plrs.LocalPlayer
+
+local sgui = Instance.new("ScreenGui")
+sgui.Name = "TomatoCharMenu"
+sgui.ResetOnSpawn = false
+sgui.Parent = lplr:WaitForChild("PlayerGui")
+
+local openBtn = Instance.new("TextButton")
+openBtn.Size = UDim2.new(0, 160, 0, 45)
+openBtn.Position = UDim2.new(0, 20, 0.55, 0)
+openBtn.Text = "★ Get characters"
+openBtn.Font = Enum.Font.SourceSansBold
+openBtn.TextSize = 18
+openBtn.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
+openBtn.TextColor3 = Color3.fromRGB(40, 40, 40)
+openBtn.Parent = sgui
+
+local btnCorner = Instance.new("UICorner")
+btnCorner.CornerRadius = UDim.new(0, 12)
+btnCorner.Parent = openBtn
+
+local btnStroke = Instance.new("UIStroke")
+btnStroke.Thickness = 1.5
+btnStroke.Color = Color3.fromRGB(210, 210, 215)
+btnStroke.Parent = openBtn
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 310, 0, 310)
+mainFrame.Position = UDim2.new(0.5, -155, 0.4, -155)
+mainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+mainFrame.BorderSizePixel = 0
+mainFrame.Visible = false
+mainFrame.Active = true
+mainFrame.Parent = sgui
+
+local panelCorner = Instance.new("UICorner")
+panelCorner.CornerRadius = UDim.new(0, 20)
+panelCorner.Parent = mainFrame
+
+local panelStroke = Instance.new("UIStroke")
+panelStroke.Thickness = 2
+panelStroke.Color = Color3.fromRGB(220, 220, 225)
+panelStroke.Parent = mainFrame
+
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Size = UDim2.new(1, 0, 0, 40)
+titleLabel.Position = UDim2.new(0, 0, 0, 15)
+titleLabel.Text = "★ TOMATOUNU ★ (V1)"
+titleLabel.Font = Enum.Font.SourceSansBold
+titleLabel.TextSize = 24
+titleLabel.TextColor3 = Color3.fromHex("#2020f5")
+titleLabel.BackgroundTransparency = 1
+titleLabel.Parent = mainFrame
+
+local subLabel = Instance.new("TextLabel")
+subLabel.Size = UDim2.new(1, 0, 0, 25)
+subLabel.Position = UDim2.new(0, 0, 0, 55)
+subLabel.Text = "★ Made by tomatounu"
+subLabel.Font = Enum.Font.SourceSansBold
+subLabel.TextSize = 16
+subLabel.TextColor3 = Color3.fromRGB(100, 105, 115)
+subLabel.BackgroundTransparency = 1
+subLabel.Parent = mainFrame
+
+local charContainer = Instance.new("Frame")
+charContainer.Size = UDim2.new(1, 0, 0, 210)
+charContainer.Position = UDim2.new(0, 0, 0, 85)
+charContainer.BackgroundTransparency = 1
+charContainer.Parent = mainFrame
+
+local nameInput = Instance.new("TextBox")
+nameInput.Size = UDim2.new(0, 240, 0, 35)
+nameInput.Position = UDim2.new(0.5, -120, 0, 0)
+nameInput.PlaceholderText = "Character Name (e.g. Luffy)"
+nameInput.Text = ""
+nameInput.Font = Enum.Font.SourceSans
+nameInput.TextSize = 14
+nameInput.BackgroundColor3 = Color3.fromRGB(240, 242, 245)
+nameInput.TextColor3 = Color3.fromRGB(30, 30, 30)
+nameInput.PlaceholderColor3 = Color3.fromRGB(140, 145, 150)
+nameInput.BorderSizePixel = 0
+nameInput.Parent = charContainer
+
+local nc = Instance.new("UICorner") nc.CornerRadius = UDim.new(0, 8) nc.Parent = nameInput
+local ns = Instance.new("UIStroke") ns.Color = Color3.fromRGB(220, 220, 225) ns.Parent = nameInput
+
+local rarityInput = Instance.new("TextBox")
+rarityInput.Size = UDim2.new(0, 240, 0, 35)
+rarityInput.Position = UDim2.new(0.5, -120, 0, 45)
+rarityInput.PlaceholderText = "Rarity (e.g. Normal)"
+rarityInput.Text = ""
+rarityInput.Font = Enum.Font.SourceSans
+rarityInput.TextSize = 14
+rarityInput.BackgroundColor3 = Color3.fromRGB(240, 242, 245)
+rarityInput.TextColor3 = Color3.fromRGB(30, 30, 30)
+rarityInput.PlaceholderColor3 = Color3.fromRGB(140, 145, 150)
+rarityInput.BorderSizePixel = 0
+rarityInput.Parent = charContainer
+
+local rc = Instance.new("UICorner") rc.CornerRadius = UDim.new(0, 8) rc.Parent = rarityInput
+local rs = Instance.new("UIStroke") rs.Color = Color3.fromRGB(220, 220, 225) rs.Parent = rarityInput
+
+local mutationInput = Instance.new("TextBox")
+mutationInput.Size = UDim2.new(0, 240, 0, 35)
+mutationInput.Position = UDim2.new(0.5, -120, 0, 90)
+mutationInput.PlaceholderText = "Mutation (e.g. Neon)"
+mutationInput.Text = ""
+mutationInput.Font = Enum.Font.SourceSans
+mutationInput.TextSize = 14
+mutationInput.BackgroundColor3 = Color3.fromRGB(240, 242, 245)
+mutationInput.TextColor3 = Color3.fromRGB(30, 30, 30)
+mutationInput.PlaceholderColor3 = Color3.fromRGB(140, 145, 150)
+mutationInput.BorderSizePixel = 0
+mutationInput.Parent = charContainer
+
+local mc = Instance.new("UICorner") mc.CornerRadius = UDim.new(0, 8) mc.Parent = mutationInput
+local ms = Instance.new("UIStroke") ms.Color = Color3.fromRGB(220, 220, 225) ms.Parent = mutationInput
+
+local fireBtn = Instance.new("TextButton")
+fireBtn.Size = UDim2.new(0, 240, 0, 42)
+fireBtn.Position = UDim2.new(0.5, -120, 0, 140)
+fireBtn.Text = "Fire Event"
+fireBtn.Font = Enum.Font.SourceSansBold
+fireBtn.TextSize = 20
+fireBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+fireBtn.BackgroundColor3 = Color3.fromRGB(255, 0, 127)
+fireBtn.BorderSizePixel = 0
+fireBtn.Parent = charContainer
+
+local fc = Instance.new("UICorner") fc.CornerRadius = UDim.new(0, 12) fc.Parent = fireBtn
+
+openBtn.MouseButton1Click:Connect(function()
+	mainFrame.Visible = not mainFrame.Visible
+end)
+
+local function makeDraggable(guiObject)
+	local dragging, dragInput, dragStart, startPos
+	guiObject.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = guiObject.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	guiObject.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	uis.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			local delta = input.Position - dragStart
+			guiObject.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		end
+	end)
+end
+
+makeDraggable(mainFrame)
+makeDraggable(openBtn)
+
+local hexColors = {
+	"#2020f5",
+	"#d5f520",
+	"#f52080",
+	"#42e6f5"
+}
+
+task.spawn(function()
+	local index = 1
+	while true do
+		local nextIndex = index + 1
+		if nextIndex > #hexColors then nextIndex = 1 end
+		
+		local tweenInfo = TweenInfo.new(2.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+		local tween = ts:Create(titleLabel, tweenInfo, {TextColor3 = Color3.fromHex(hexColors[nextIndex])})
+		tween:Play()
+		tween.Completed:Wait()
+		
+		index = nextIndex
+	end
+end)
+
+fireBtn.MouseButton1Click:Connect(function()
+	local charName = nameInput.Text ~= "" and nameInput.Text or "Kaido"
+	local charRarity = rarityInput.Text ~= "" and rarityInput.Text or "Mythical"
+	local charMutation = mutationInput.Text ~= "" and mutationInput.Text or "Normal"
+	
+	local eventsFolder = rep:FindFirstChild("Events")
+	if eventsFolder and eventsFolder:FindFirstChild("RewardEscape") then
+		local args = {
+			[1] = charName,
+			[2] = charMutation,
+			[3] = charRarity,
+			n = 3
+		}
+		eventsFolder.RewardEscape:FireServer(unpack(args, 1, args.n or #args))
+		print("Fired event locally with custom character params")
+	else
+		warn("Events.RewardEscape not found in ReplicatedStorage")
+	end
+end)
+
+-- spent a lotta time on ts ngl, yall better leave a 
