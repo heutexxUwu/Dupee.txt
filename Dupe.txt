@@ -209,4 +209,4 @@ fireBtn.MouseButton1Click:Connect(function()
 	end
 end)
 
--- Made by Käthe
+-- Made by tomato and Käthe
